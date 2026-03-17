@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH -N 1 -p intelsr_devel --exclusive --time=00:10:00 --constraint=perfctr
-#SBATCH -p hager_workshop_intelsr
+#SBATCH --reservation=hager_workshop_intelsr
 
 module load intel GCC
 echo Hello World!
