@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -p sgpu_devel --time=01:00:00 --gpus=1
+#SBATCH -p sgpu_devel --time=00:10:00 --gpus=1
 #SBATCH --reservation=hager_workshop_sgpu
 #SBATCH --export=NONE
 
