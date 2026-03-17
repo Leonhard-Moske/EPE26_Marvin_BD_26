@@ -11,8 +11,11 @@ hostname
 
 nvcc -O3  --use_fast_math -arch=sm_80 -lcuda -o jacobi-2d jacobi-2d.cu
 
-SZ=$((5*1024+32))
+SIZE=2048
+ITER=200
+BLOCKSIZE=16
 
-./jacobi-2d $SZ $SZ 32 32 
+./jacobi-2d $SIZE $SIZE $ITER $BLOCKSIZE $BLOCKSIZE
+
 
 
