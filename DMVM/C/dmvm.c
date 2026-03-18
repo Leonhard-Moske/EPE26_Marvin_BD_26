@@ -72,8 +72,8 @@ double dmvm(
 int main (int argc, char** argv)
 {
     size_t bytesPerWord = sizeof(double);
-    size_t N_rows = 0;
-    size_t N_cols = 0;
+    size_t N_rows = 100000;
+    size_t N_cols = 100000;
     size_t iter = 1;
     double *a, *x, *y;
     double E, S;

@@ -2,22 +2,24 @@
 #SBATCH -N 1 -p intelsr_devel --exclusive --time=00:10:00 --constraint=perfctr
 #SBATCH --reservation=hager_workshop_intelsr
 #SBATCH --export=NONE
+#SBATCH --account=tmp_hager_workshop
 
 unset SLURM_EXPORT_ENV
 
 module load intel GCC
+
 echo Hello World!
 hostname
 
 # choose between C and Fortran
-icx -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe C/dmvm.c
+#icx -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe C/dmvm.c
 #ifx -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe F90/dmvm.f90
 
 # comment out for second part of exercise
-srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./bench.pl ./dmvm.exe 10000
+#srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./bench.pl ./dmvm.exe 10000
 
 # remove for second part of exercise
-exit
+#exit
 
 # choose between C and Fortran
 #icx -DLIKWID_PERFMON -Ofast -xHost -qopt-zmm-usage=high -o ./dmvm.exe C/dmvm-marker.c -llikwid

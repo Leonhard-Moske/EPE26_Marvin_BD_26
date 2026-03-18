@@ -2,6 +2,8 @@
 #SBATCH -p sgpu_devel --time=00:10:00 --gpus=1
 #SBATCH --reservation=hager_workshop_sgpu
 #SBATCH --export=NONE
+#SBATCH --account=tmp_hager_workshop
+
 
 unset SLURM_EXPORT_ENV
 
@@ -14,7 +16,7 @@ nvcc -O3  --use_fast_math -arch=sm_80 -lcuda -o jacobi-2d jacobi-2d.cu
 
 SIZE=2048
 ITER=200
-BLOCKSIZE=16
+BLOCKSIZE=64
 
 ./jacobi-2d $SIZE $SIZE $ITER $BLOCKSIZE $BLOCKSIZE
 

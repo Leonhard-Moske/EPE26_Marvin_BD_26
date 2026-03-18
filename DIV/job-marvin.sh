@@ -10,8 +10,14 @@ echo Hello World!
 
 # choose between C and Fortran
 icx -Ofast -xHost -qopt-zmm-usage=high -o div.exe  div.c
-#ifx -Ofast -xHost -qopt-zmm-usage=high -o div.exe  div.f90
-
 srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./div.exe
+icx -O3 -xSSE4.2 -o div.exe  div.c
+srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./div.exe
+icx -O1 -no-vec  -o div.exe  div.c
+srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./div.exe
+icx -O3 -xAVX2 -o div.exe  div.c
+srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./div.exe
+
+#srun --cpu-bind=none --cpu-freq=2000000-2000000:performance ./div.exe
 
 
